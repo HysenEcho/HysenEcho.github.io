@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hysen</title>
+  
+  <subtitle>一个想摆烂的ICer</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-08-28T21:28:07.811Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Hysen</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网页源码管理</title>
+    <link href="http://example.com/2023/08/29/%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86/"/>
+    <id>http://example.com/2023/08/29/%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86/</id>
+    <published>2023-08-29T07:54:51.738Z</published>
+    <updated>2023-08-28T21:28:07.811Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为自己老是手贱，不知道就把哪里改了，然后就会出一些莫名奇妙的问题，甚至可以折腾好几天，所以特别需要用git进行源码管理。奈何自己对于git理解不到位，使用起来很吃力，在借鉴了几位大佬的文章后，才渐渐上手，在此记录一下操作，遇到的bug，以及解决办法。</p><p>参考文章：</p><p>1.<a href="https://akilar.top/posts/f752c86d/">使用Github Action实现全自动部署</a></p><p>2.<a href="https://blog.ccknbc.cc/posts/hexo-toss/">hexo博客搭建–源码管理</a></p><h1 id="源码管理"><a href="#源码管理" class="headerlink" title="源码管理"></a>源码管理</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="新建脚本"><a href="#新建脚本" class="headerlink" title="新建脚本"></a>新建脚本</h3><p>每次推送都要输入这三条命令，你可能觉得有些麻烦。那么你可以编写 bash 脚本。</p><p>譬如，在根目录下新建 <code>update.sh</code>。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果没有消息后缀，默认提交信息为 `:Hysen: update content`</span></span><br><span class="line">info=<span class="variable">$1</span></span><br><span class="line"><span class="keyword">if</span> [<span class="string">&quot;<span class="variable">$info</span>&quot;</span> = <span class="string">&quot;&quot;</span>];</span><br><span class="line"><span class="keyword">then</span> info=<span class="string">&quot;:Hysen: update content&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">git add -A</span><br><span class="line">git commit -m <span class="string">&quot;<span class="variable">$info</span>&quot;</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure><p>此后更新的话，只需要在终端执行 <code>sh update.sh</code> 即可。</p><h2 id="出现问题"><a href="#出现问题" class="headerlink" title="出现问题"></a>出现问题</h2><h3 id="问题1：git-add报错"><a href="#问题1：git-add报错" class="headerlink" title="问题1：git add报错"></a>问题1：git add报错</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">warning: adding embedded git repository: themes/hexo-theme-huhu</span><br><span class="line">hint: You<span class="string">&#x27;ve added another git repository inside your current repository.</span></span><br><span class="line"><span class="string">hint: Clones of the outer repository will not contain the contents of</span></span><br><span class="line"><span class="string">hint: the embedded repository and will not know how to obtain it.</span></span><br><span class="line"><span class="string">hint: If you meant to add a submodule, use:</span></span><br><span class="line"><span class="string">hint: </span></span><br><span class="line"><span class="string">hint:   git submodule add &lt;url&gt; themes/hexo-theme-huhu</span></span><br><span class="line"><span class="string">hint: </span></span><br><span class="line"><span class="string">hint: If you added this path by mistake, you can remove it from the</span></span><br><span class="line"><span class="string">hint: index with:</span></span><br><span class="line"><span class="string">hint: </span></span><br><span class="line"><span class="string">hint:   git rm --cached themes/hexo-theme-huhu</span></span><br><span class="line"><span class="string">hint: </span></span><br><span class="line"><span class="string">hint: See &quot;git help submodule&quot; for more information.</span></span><br></pre></td></tr></table></figure><p>因为在父仓库内部克隆一个仓库 &#x2F;themes&#x2F;anzhiyu (从另一个 rope 克隆过来的)，会添加为子模块，但是不知道这个模块仓库所在的 url ，因此在 GitHub 上无法打开这个文件夹</p><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>参考：1.<a href="https://akilar.top/posts/f752c86d/">使用Github Action实现全自动部署–源码管理部分</a></p><p>删除或者先把<code>[Blogroot]/themes/butterfly/.git</code>移动到非博客文件夹目录下,原因是主题文件夹下的<code>.git</code>文件夹的存在会导致其被识别成子项目，从而无法被上传到源码仓库</p><h3 id="问题2-git-push报错"><a href="#问题2-git-push报错" class="headerlink" title="问题2 git push报错"></a>问题2 git push报错</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-upstream origin hexo</span><br><span class="line">error: src refspec hexo does not match any</span><br><span class="line">error: failed to push some refs to <span class="string">&#x27;https://github.com/HysenEcho/HysenEcho.github.io&#x27;</span></span><br></pre></td></tr></table></figure><p>后来重新输入,改为master，还是报错</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push --set-upstream origin master</span><br><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/HysenEcho/HysenEcho.github.io/&#x27;</span>: Recv failure: Connection was reset</span><br></pre></td></tr></table></figure><h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h4><p>参考文章：<a href="https://www.cnblogs.com/nuomibaibai/p/17040228.html">解决Recv failure: Connection was reset</a></p><p>1、在git中执行git config –global –unset http.proxy和git config –global –unset https.proxy</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure><p>2、在cmd下执行ipconfig&#x2F;flushdns 清理DNS缓存</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span>/flushdns</span><br></pre></td></tr></table></figure><p>3、重新push</p><h1 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;因为自己老是手贱，不知道就把哪里改了，然后就会出一些莫名奇妙的问题，甚至可以折腾好几天，所以特别需要用git进行源码管理。奈何自己对于git理解不到位，使用起来很吃力，在借鉴了几位大佬的文章后，才渐渐上手，在此记录一下操作，遇到的bug，以及解决办法。&lt;/p&gt;
+&lt;p&gt;参考文</summary>
+      
+    
+    
+    
+    <category term="Hexo" scheme="http://example.com/categories/Hexo/"/>
+    
+    <category term="博客" scheme="http://example.com/categories/Hexo/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="博客写作" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
+    
+    <category term="git" scheme="http://example.com/tags/git/"/>
+    
+    <category term="使用记录" scheme="http://example.com/tags/%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建人生第一个个人博客</title>
+    <link href="http://example.com/2023/08/29/%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2023/08/29/%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2023-08-29T07:54:51.733Z</published>
+    <updated>2023-08-29T05:37:01.965Z</updated>
+    
+    <content type="html"><![CDATA[<p>看着别人的博客很炫酷，所以也想自己尝试着搭建一个简单的博客，记录一下。</p><h1 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h1><p>首先是购买域名，在华为云购买<code>hysen.top</code>，因为与我的小名谐音。</p><h1 id="寻找搭建网站教程"><a href="#寻找搭建网站教程" class="headerlink" title="寻找搭建网站教程"></a>寻找搭建网站教程</h1><p>因为我是一个纯小白，寻找一个无需前端代码的网站搭建方式尤为重要。</p><h2 id="方法一-用vercel部署"><a href="#方法一-用vercel部署" class="headerlink" title="方法一 用vercel部署"></a>方法一 用vercel部署</h2><p>在B站突然推荐了一个视频<br><a href="https://www.bilibili.com/video/BV1ia411d7q4?vd_source=13a606ca4db0b44a3244a6036f52c6dc">在线免费搭建hexo博客</a><br>尝试了一下，确实挺简单</p><h2 id="方法二-用GitHubpages"><a href="#方法二-用GitHubpages" class="headerlink" title="方法二 用GitHubpages"></a>方法二 用GitHubpages</h2><p>经过一位大佬的推荐<code>@海阔蓝</code>，推荐了从头到尾的教程<br><a href="https://akilar.top/posts/6ef63e2d/">Hexo+github搭建个人博客</a></p><h1 id="关键步骤"><a href="#关键步骤" class="headerlink" title="关键步骤"></a>关键步骤</h1><h2 id="华为云解析"><a href="#华为云解析" class="headerlink" title="华为云解析"></a>华为云解析</h2><p>域名无法直接使用，需要在华为云控制台-&gt;域名-&gt;云解析<br>在vercel点击add，将值填入云解析，即可通过域名成功访问</p><p>{ % note info % } 在使用方式二时，需要解析为<code>CNAM</code>类型，在配置dns时，即需要重定向至hysenecho.github.io { % endnote % }</p><h2 id="GitHubpages无法访问"><a href="#GitHubpages无法访问" class="headerlink" title="GitHubpages无法访问"></a>GitHubpages无法访问</h2><p>如果访问时显示404，是因为仓库为私密，需要公开。</p><p>更改之后重新部署即可</p><h2 id="源码与静态网页分离"><a href="#源码与静态网页分离" class="headerlink" title="源码与静态网页分离"></a>源码与静态网页分离</h2><p>可以发现，本地的源码是markdown文件，而GitHub仓库中是HTML文件，保证了源码不公开</p><p>{ % note warning % } 在看了大佬的教程，以为需要重新开一个私人库，然后用GitHubaction自动部署，折腾了半天，才发现最开始已经实现了分离。 { % endnote % }<br><a href="https://akilar.top/posts/f752c86d/">使用Github Action实现全自动部署</a></p><h2 id="git之后自动部署-利用脚本"><a href="#git之后自动部署-利用脚本" class="headerlink" title="git之后自动部署(利用脚本)"></a>git之后自动部署(利用脚本)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#git-pull用来从远程仓库拉取最新更改，适用于多PC或多系统端之间的版本对接</span></span><br><span class="line">git pull </span><br><span class="line"><span class="comment">#git-push（用于提交每次的修改到远程仓库</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;deploy from hexo-admin&quot;</span></span><br><span class="line">git push</span><br><span class="line"><span class="comment">#hexo-publish（清空本地缓存后重新部署博客页面）</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo depoly</span><br></pre></td></tr></table></figure><p>将.txt后缀更改为.sh后缀，就是一个可执行脚本了</p><h2 id="博客自动部署"><a href="#博客自动部署" class="headerlink" title="博客自动部署"></a>博客自动部署</h2><p>利用Hexo中的博客一键部署即可，不需要重新创建GitHubaction</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;看着别人的博客很炫酷，所以也想自己尝试着搭建一个简单的博客，记录一下。&lt;/p&gt;
+&lt;h1 id=&quot;购买域名&quot;&gt;&lt;a href=&quot;#购买域名&quot; class=&quot;headerlink&quot; title=&quot;购买域名&quot;&gt;&lt;/a&gt;购买域名&lt;/h1&gt;&lt;p&gt;首先是购买域名，在华为云购买&lt;code</summary>
+      
+    
+    
+    
+    <category term="博客" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="博客搭建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown在网页的使用</title>
+    <link href="http://example.com/2023/08/29/markdown%E5%9C%A8%E7%BD%91%E9%A1%B5%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2023/08/29/markdown%E5%9C%A8%E7%BD%91%E9%A1%B5%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-08-29T07:54:51.727Z</published>
+    <updated>2023-08-29T05:35:01.050Z</updated>
+    
+    <content type="html"><![CDATA[<p>经常在Obsidian中使用markdown，具备比较丰富的快捷键和插件可供使用。</p><p>在Hexo网页中有所不同，记录一下<br>参考链接：<a href="https://febers.github.io/Markdown-%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/">markdown语法</a></p><h1 id="callout"><a href="#callout" class="headerlink" title="callout"></a>callout</h1><p>使用前端框架 Bootstrap Callout 的语法，Hexo 提供了对其的支持，Content 可以搭配 Markdown 语法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123; % note class_name % &#125; Content (md partial supported) &#123; % endnote % &#125;</span><br><span class="line"></span><br><span class="line">&#123; % note default % &#125; This is a default note &#123; % endnote % &#125;</span><br><span class="line"></span><br><span class="line">&#123; % note primary % &#125; This is a  primary note &#123; % endnote % &#125;</span><br><span class="line"></span><br><span class="line">&#123; % note success % &#125; This is a success note &#123; % endnote % &#125;</span><br><span class="line"></span><br><span class="line">&#123; % note info % &#125; This is a info note &#123; % endnote % &#125;</span><br><span class="line"></span><br><span class="line">&#123; % note warning % &#125; This is a warning note &#123; % endnote % &#125;</span><br><span class="line"></span><br><span class="line">&#123; % note danger % &#125; This is a danger note &#123; % endnote % &#125;</span><br></pre></td></tr></table></figure><p>实现类似笔记的引用效果，其中<code>class_name</code>可以为</p><ul><li><code>default</code></li><li><code>primary</code></li><li><code>success</code></li><li><code>info</code></li><li><code>warning</code></li><li><code>danger</code></li></ul><p>例如：<br>{ % note danger % } This is a danger note { % endnote % }</p><h1 id="表情"><a href="#表情" class="headerlink" title="表情"></a>表情</h1><p>GFM 语法支持添加 emoji 表情，输入不同的符号码（两个冒号包围的字符）可以显示出不同的表情。</p><p>比如:stuck_out_tongue_winking_eye:：😜<br>:grinning_face:<br>😍<br>可以在此找到不同表情对应的符号码：<a href="https://www.webfx.com/tools/emoji-cheat-sheet/">Emoji cheat sheet for GitHub, Basecamp, Slack &amp; more</a></p><p>Hexo 默认不支持 emoji 表情，可以通过安装 hexo-filter-github-emojis 插件实现</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;经常在Obsidian中使用markdown，具备比较丰富的快捷键和插件可供使用。&lt;/p&gt;
+&lt;p&gt;在Hexo网页中有所不同，记录一下&lt;br&gt;参考链接：&lt;a href=&quot;https://febers.github.io/Markdown-%E8%AF%AD%E6%B3%95%</summary>
+      
+    
+    
+    
+    <category term="博客" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="博客" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2023/08/29/hello-world/"/>
+    <id>http://example.com/2023/08/29/hello-world/</id>
+    <published>2023-08-29T07:42:15.740Z</published>
+    <updated>2023-08-29T07:42:15.741Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习</title>
+    <link href="http://example.com/2023/08/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2023/08/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
+    <published>2023-08-27T08:35:09.000Z</published>
+    <updated>2023-08-27T08:40:29.935Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h1><p>记录一下深度学习的学习记录</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;深度学习&quot;&gt;&lt;a href=&quot;#深度学习&quot; class=&quot;headerlink&quot; title=&quot;深度学习&quot;&gt;&lt;/a&gt;深度学习&lt;/h1&gt;&lt;p&gt;记录一下深度学习的学习记录&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="AI" scheme="http://example.com/categories/AI/"/>
+    
+    <category term="学习笔记" scheme="http://example.com/categories/AI/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="AI" scheme="http://example.com/tags/AI/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Pytorch" scheme="http://example.com/tags/Pytorch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客写作</title>
+    <link href="http://example.com/2023/08/27/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
+    <id>http://example.com/2023/08/27/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/</id>
+    <published>2023-08-26T18:43:39.000Z</published>
+    <updated>2023-08-26T19:30:28.109Z</updated>
+    
+    <content type="html"><![CDATA[<p>博客的写作主要利用markdown编辑器完成</p><h1 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new post title</span><br><span class="line"><span class="comment">#post为模板，可以自己更改，即以post为模板创建名为title的文章</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;博客的写作主要利用markdown编辑器完成&lt;/p&gt;
+&lt;h1 id=&quot;创建文章&quot;&gt;&lt;a href=&quot;#创建文章&quot; class=&quot;headerlink&quot; title=&quot;创建文章&quot;&gt;&lt;/a&gt;创建文章&lt;/h1&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;tab</summary>
+      
+    
+    
+    
+    <category term="博客" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="博客写作" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
+    
+  </entry>
+  
+</feed>
