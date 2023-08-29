@@ -19,14 +19,14 @@ http://example.com/essay/index.html
 http://example.com/
 http://example.com/tags/%E5%8D%9A%E5%AE%A2/
 http://example.com/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/
-http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/
 http://example.com/tags/AI/
 http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/
 http://example.com/tags/Pytorch/
+http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/
 http://example.com/tags/git/
 http://example.com/tags/%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/
 http://example.com/categories/%E5%8D%9A%E5%AE%A2/
 http://example.com/categories/AI/
-http://example.com/categories/AI/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 http://example.com/categories/Hexo/
+http://example.com/categories/AI/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 http://example.com/categories/Hexo/%E5%8D%9A%E5%AE%A2/
