@@ -3,11 +3,11 @@
   <title>Hysen</title>
   
   <subtitle>一个想摆烂的ICer</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://hysenecho.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://hysenecho.github.io/"/>
   <updated>2023-08-28T21:28:07.811Z</updated>
-  <id>http://example.com/</id>
+  <id>http://hysenecho.github.io/</id>
   
   <author>
     <name>Hysen</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>网页源码管理</title>
-    <link href="http://example.com/2023/08/29/%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86/"/>
-    <id>http://example.com/2023/08/29/%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86/</id>
+    <link href="http://hysenecho.github.io/2023/08/29/%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86/"/>
+    <id>http://hysenecho.github.io/2023/08/29/%E7%BD%91%E9%A1%B5%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86/</id>
     <published>2023-08-29T07:54:51.738Z</published>
     <updated>2023-08-28T21:28:07.811Z</updated>
     
@@ -34,23 +34,23 @@
     
     
     
-    <category term="Hexo" scheme="http://example.com/categories/Hexo/"/>
+    <category term="Hexo" scheme="http://hysenecho.github.io/categories/Hexo/"/>
     
-    <category term="博客" scheme="http://example.com/categories/Hexo/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="http://hysenecho.github.io/categories/Hexo/%E5%8D%9A%E5%AE%A2/"/>
     
     
-    <category term="博客写作" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
+    <category term="博客写作" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
     
-    <category term="git" scheme="http://example.com/tags/git/"/>
+    <category term="git" scheme="http://hysenecho.github.io/tags/git/"/>
     
-    <category term="使用记录" scheme="http://example.com/tags/%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <category term="使用记录" scheme="http://hysenecho.github.io/tags/%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>搭建人生第一个个人博客</title>
-    <link href="http://example.com/2023/08/29/%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2023/08/29/%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://hysenecho.github.io/2023/08/29/%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://hysenecho.github.io/2023/08/29/%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</id>
     <published>2023-08-29T07:54:51.733Z</published>
     <updated>2023-08-29T05:37:01.965Z</updated>
     
@@ -65,17 +65,17 @@
     
     
     
-    <category term="博客" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
-    <category term="博客搭建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <category term="博客搭建" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
   <entry>
     <title>markdown在网页的使用</title>
-    <link href="http://example.com/2023/08/29/markdown%E5%9C%A8%E7%BD%91%E9%A1%B5%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>http://example.com/2023/08/29/markdown%E5%9C%A8%E7%BD%91%E9%A1%B5%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <link href="http://hysenecho.github.io/2023/08/29/markdown%E5%9C%A8%E7%BD%91%E9%A1%B5%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://hysenecho.github.io/2023/08/29/markdown%E5%9C%A8%E7%BD%91%E9%A1%B5%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <published>2023-08-29T07:54:51.727Z</published>
     <updated>2023-08-29T05:35:01.050Z</updated>
     
@@ -90,17 +90,17 @@
     
     
     
-    <category term="博客" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
-    <category term="博客" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2023/08/29/hello-world/"/>
-    <id>http://example.com/2023/08/29/hello-world/</id>
+    <link href="http://hysenecho.github.io/2023/08/29/hello-world/"/>
+    <id>http://hysenecho.github.io/2023/08/29/hello-world/</id>
     <published>2023-08-29T07:42:15.740Z</published>
     <updated>2023-08-29T07:42:15.741Z</updated>
     
@@ -119,8 +119,8 @@
   
   <entry>
     <title>深度学习</title>
-    <link href="http://example.com/2023/08/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://example.com/2023/08/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
+    <link href="http://hysenecho.github.io/2023/08/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://hysenecho.github.io/2023/08/27/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
     <published>2023-08-27T08:35:09.000Z</published>
     <updated>2023-08-27T08:40:29.935Z</updated>
     
@@ -135,23 +135,23 @@
     
     
     
-    <category term="AI" scheme="http://example.com/categories/AI/"/>
+    <category term="AI" scheme="http://hysenecho.github.io/categories/AI/"/>
     
-    <category term="学习笔记" scheme="http://example.com/categories/AI/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="http://hysenecho.github.io/categories/AI/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="AI" scheme="http://example.com/tags/AI/"/>
+    <category term="AI" scheme="http://hysenecho.github.io/tags/AI/"/>
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="深度学习" scheme="http://hysenecho.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="Pytorch" scheme="http://example.com/tags/Pytorch/"/>
+    <category term="Pytorch" scheme="http://hysenecho.github.io/tags/Pytorch/"/>
     
   </entry>
   
   <entry>
     <title>博客写作</title>
-    <link href="http://example.com/2023/08/27/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
-    <id>http://example.com/2023/08/27/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/</id>
+    <link href="http://hysenecho.github.io/2023/08/27/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
+    <id>http://hysenecho.github.io/2023/08/27/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/</id>
     <published>2023-08-26T18:43:39.000Z</published>
     <updated>2023-08-26T19:30:28.109Z</updated>
     
@@ -166,10 +166,10 @@
     
     
     
-    <category term="博客" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
-    <category term="博客写作" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
+    <category term="博客写作" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
