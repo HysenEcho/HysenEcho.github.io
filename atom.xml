@@ -96,11 +96,11 @@
     <category term="Hexo" scheme="http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/Hexo/"/>
     
     
-    <category term="博客写作" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
-    
     <category term="使用记录" scheme="http://hysenecho.github.io/tags/%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
     
     <category term="ToDoList" scheme="http://hysenecho.github.io/tags/ToDoList/"/>
+    
+    <category term="博客写作" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
@@ -159,9 +159,9 @@
     <category term="Hexo" scheme="http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/Hexo/"/>
     
     
-    <category term="博客写作" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
-    
     <category term="使用记录" scheme="http://hysenecho.github.io/tags/%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="博客写作" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/"/>
     
     <category term="git" scheme="http://hysenecho.github.io/tags/git/"/>
     
