@@ -20,12 +20,28 @@
     <title>部署twikoo评论</title>
     <link href="http://hysenecho.github.io/2023/09/03/%E9%83%A8%E7%BD%B2twikoo%E8%AF%84%E8%AE%BA/"/>
     <id>http://hysenecho.github.io/2023/09/03/%E9%83%A8%E7%BD%B2twikoo%E8%AF%84%E8%AE%BA/</id>
-    <published>2023-09-02T18:04:19.000Z</published>
+    <published>2023-09-02T16:04:19.000Z</published>
     <updated>2023-09-02T18:04:19.000Z</updated>
     
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前一直使用waline评论，但是看见都是用twikoo评论，可以输入QQ自动获取昵称，我觉得很酷，改！！</p><div class="note blue anzhiyufont anzhiyu-icon-bullhorn simple"><p>参考链接：<a href="https://blhorizon.github.io/article/50c6.html%EF%BC%8C%E4%BD%BF%E7%94%A8%60vecel%60%E9%83%A8%E7%BD%B2%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%EF%BC%8C%E6%94%B9%E7%94%A8%60Zeabur%60%E9%83%A8%E7%BD%B2%EF%BC%8C%E6%95%99%E7%A8%8B%EF%BC%9Ahttps://twikoo.js.org/quick-start.html#zeabur-%E9%83%A8%E7%BD%B2">https://blhorizon.github.io/article/50c6.html，使用`vecel`部署无法加载，改用`Zeabur`部署，教程：https://twikoo.js.org/quick-start.html#zeabur-%E9%83%A8%E7%BD%B2</a> </p></div><p>按照教程即可</p><h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><p>昵称无法自动获取，是因为腾讯API失效，改用了<code>@青桔</code>大佬的API</p><div class="note blue anzhiyufont anzhiyu-icon-bullhorn simple"><p>参考链接：<a href="https://blog.qjqq.cn/posts/c04c.html">https://blog.qjqq.cn/posts/c04c.html</a> </p></div><h2 id="获取twikoo-all-min-js-文件"><a href="#获取twikoo-all-min-js-文件" class="headerlink" title="获取twikoo.all.min.js 文件"></a>获取twikoo.all.min.js 文件</h2><p>获取方法：浏览器打开自己的博客，然后按键 <kbd>F12</kbd> 找到网络，随便打开一篇文章刷新，从网络请求中找到twikoo.all.min.js文件，下载到本地即可，下载到本地后是乱码，需要用插件格式化一下</p><p>在下载的文件中查找<code>https://tenapi.cn/qqname?qq=</code>，替换为<code>@青桔</code>大佬的API：<code>https://api.qjqq.cn/api/Info</code></p><h2 id="引用文件"><a href="#引用文件" class="headerlink" title="引用文件"></a>引用文件</h2><p>在主题配置文件引用修改后的文件<code>twikoo.all.min.js</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;之前一直使用waline评论，但是看见都是用twikoo评论，可以输入QQ自动获取昵称，我觉得很酷，改！！&lt;/p&gt;
+&lt;div class=&quot;</summary>
+      
     
     
     
+    <category term="博客" scheme="http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="Hexo" scheme="http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/Hexo/"/>
+    
+    
+    <category term="博客搭建" scheme="http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="使用记录" scheme="http://hysenecho.github.io/tags/%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
