@@ -23,12 +23,12 @@ http://hysenecho.github.io/link/index.html
 http://hysenecho.github.io/about/index.html
 http://hysenecho.github.io/essay/index.html
 http://hysenecho.github.io/
-http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/
 http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2/
 http://hysenecho.github.io/tags/Tag-Plugins/
 http://hysenecho.github.io/tags/Hexo/
 http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/
 http://hysenecho.github.io/tags/Markdown/
+http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/
 http://hysenecho.github.io/tags/AI/
 http://hysenecho.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/
 http://hysenecho.github.io/tags/Pytorch/
