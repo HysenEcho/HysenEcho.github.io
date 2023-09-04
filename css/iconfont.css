@@ -9,31 +9,41 @@
     /* 若已经在项目设置中勾选了彩色选项，则无需再定义图标颜色*/
     .icon-suijishushengcheng-xuanzhong:before {
         content: "\e005";
+        color: #85c3de;
     }
     .icon-a-dangan_huaban1fuben5:before {
         content: "\e006";
+        color: #85c3de;
       }
     .icon-fangzi:before {
         content: "\e007";
+        color: #85c3de;
       }
     .icon-shouye1:before {
         content: "\e008";
+        color: #85c3de;
       }
     .icon-xiangsufeng_fangzi:before {
         content: "\e009";
+        color: #85c3de;
       }
     .icon-chazhaoxiangmu:before {
         content: "\e00a";
+        color: #85c3de;
       }
     .icon-group_:before {
         content: "\e00b";
+        color: #85c3de;
       }    
     .icon-touzi:before {
         content: "\e00c";
+        color: #85c3de;
       }
     .icon-jingzhunsousuo:before {
         content: "\e00d";
+        color: #85c3de;
       }
     .icon-360duzhongyangkongzhixitong:before {
         content: "\e00e";
+        color: #85c3de;
       }
