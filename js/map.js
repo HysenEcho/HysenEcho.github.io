@@ -215,7 +215,7 @@ function showWelcome() {
     try {
         //自定义文本和需要放的位置,&emsp;&emsp;
         document.getElementById("welcome-info").innerHTML =
-            `<b><center>🎉 欢迎信息 🎉</center> <b>欢迎来自 <span style="color:#49b1f5">${pos}</span> 的小伙伴🤩</b><b>${timeChange}</b><b>您现在距离站长约 <span style="color:#49b1f5">${dist}</span> 公里!</b><b>当前的IP地址为： <span style="color:#b15700">${ip}</span></b><b>${posdesc}</b></b>`;
+            `<b><center>🎉 欢迎信息 🎉</center> <br>欢迎来自 <span style="color:#49b1f5">${pos}</span> 的小伙伴🤩<br>${timeChange}<br>您现在距离站长约 <span style="color:#49b1f5">${dist}</span> 公里!<br>当前的IP地址为： <span style="color:#b15700">${ip}</span><br>${posdesc}</b>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }
