@@ -1,7 +1,7 @@
 //get请求
 $.ajax({
     type: 'get',
-    url:  'https://api.qjqq.cn/api/district?ip',    //#'https://apis.map.qq.com/ws/location/v1/ip',
+    url:  'https://api.qjqq.cn/api/district?ip=',    //#'https://apis.map.qq.com/ws/location/v1/ip',
     data: {
         key: '你的key',
         output: 'jsonp',
