@@ -1,0 +1,39 @@
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 3em;
+    /* 可以定义图标大小 */
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+    /* 若已经在项目设置中勾选了彩色选项，则无需再定义图标颜色*/
+    .icon-suijishushengcheng-xuanzhong:before {
+        content: "\e005";
+    }
+    .icon-a-dangan_huaban1fuben5:before {
+        content: "\e005";
+      }
+    .icon-fangzi:before {
+        content: "\e005";
+      }
+    .icon-shouye1:before {
+        content: "\e005";
+      }
+    .icon-xiangsufeng_fangzi:before {
+        content: "\e005";
+      }
+    .icon-chazhaoxiangmu:before {
+        content: "\e005";
+      }
+    .icon-group_:before {
+        content: "\e005";
+      }    
+    .icon-touzi:before {
+        content: "\e005";
+      }
+    .icon-jingzhunsousuo:before {
+        content: "\e005";
+      }
+    .icon-360duzhongyangkongzhixitong:before {
+        content: "\e005";
+      }
