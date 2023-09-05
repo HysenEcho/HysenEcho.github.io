@@ -23,6 +23,9 @@ http://hysenecho.github.io/link/index.html
 http://hysenecho.github.io/about/index.html
 http://hysenecho.github.io/essay/index.html
 http://hysenecho.github.io/
+http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2/
+http://hysenecho.github.io/tags/Tag-Plugins/
+http://hysenecho.github.io/tags/Hexo/
 http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/
 http://hysenecho.github.io/tags/Markdown/
 http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/
@@ -34,9 +37,6 @@ http://hysenecho.github.io/tags/ToDoList/
 http://hysenecho.github.io/tags/%E9%AD%94%E6%94%B9/
 http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/
 http://hysenecho.github.io/tags/git/
-http://hysenecho.github.io/tags/%E5%8D%9A%E5%AE%A2/
-http://hysenecho.github.io/tags/Tag-Plugins/
-http://hysenecho.github.io/tags/Hexo/
 http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/
 http://hysenecho.github.io/categories/AI/
 http://hysenecho.github.io/categories/%E5%8D%9A%E5%AE%A2/Hexo/
