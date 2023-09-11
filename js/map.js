@@ -28,8 +28,8 @@ function getDistance(e1, n1, e2, n2) {
 }
 
 function showWelcome() {
-
-    let dist = getDistance(110.999543,31.347029, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
+    // 110.975533,31.332902 梅坪村，使用的是重邮光电
+    let dist = getDistance(106.612231,29.53706, ipLoacation.result.location.lng, ipLoacation.result.location.lat); //这里换成自己的经纬度
     let pos = ipLoacation.result.ad_info.nation;
     let ip;
     let posdesc;
