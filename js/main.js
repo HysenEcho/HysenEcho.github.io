@@ -9,6 +9,9 @@ var anzhiyu_intype = false;
 var anzhiyu_keyUpEvent_timeoutId = null;
 var anzhiyu_keyUpShiftDelayEvent_timeoutId = null;
 
+// 右键菜单对象
+var rm = null;
+
 var popupWindowTimer = null;
 
 var adjectives = [
@@ -566,7 +569,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return top <= viewPortHeight;
       }
 
-      if (isInViewPortOfOneNoDis(pageBottomDomFlag) || percentage > 90) {
+      if (isInViewPortOfOneNoDis(pageBottomDomFlag || percentage > 90) && currentTop > 20) {
         $navTotop.classList.add("long");
         $percentBtn.textContent = "返回顶部";
       } else {
@@ -700,37 +703,26 @@ document.addEventListener("DOMContentLoaded", function () {
     let $tocLink, $cardToc, autoScrollToc, isExpand;
     if (isToc) {
       const $cardTocLayout = document.getElementById("card-toc");
-      $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
+      $cardToc = $cardTocLayout.querySelector(".toc-content");
       $tocLink = $cardToc.querySelectorAll(".toc-link");
       isExpand = $cardToc.classList.contains("is-expand");
 
-      window.mobileToc = {
-        open: () => {
-          $cardTocLayout.style.cssText = "animation: toc-open .3s; opacity: 1; right: 55px";
-        },
-
-        close: () => {
-          $cardTocLayout.style.animation = "toc-close .2s";
-          setTimeout(() => {
-            $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''";
-          }, 100);
-        },
-      };
-
       // toc元素點擊
-      $cardToc.addEventListener("click", e => {
+      const tocItemClickFn = e => {
+        const target = e.target.closest(".toc-link");
+        if (!target) return;
+
         e.preventDefault();
-        const target = e.target.classList;
-        if (target.contains("toc-content")) return;
-        const $target = target.contains("toc-link") ? e.target : e.target.parentElement;
         anzhiyu.scrollToDest(
-          anzhiyu.getEleTop(document.getElementById(decodeURI($target.getAttribute("href")).replace("#", ""))) - 60,
+          anzhiyu.getEleTop(document.getElementById(decodeURI(target.getAttribute("href")).replace("#", ""))),
           300
         );
         if (window.innerWidth < 900) {
-          window.mobileToc.close();
+          $cardTocLayout.classList.remove("open");
         }
-      });
+      };
+
+      anzhiyu.addEventListenerPjax($cardToc, "click", tocItemClickFn);
 
       autoScrollToc = item => {
         const activePosition = item.getBoundingClientRect().top;
@@ -853,7 +845,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $body.classList.add("read-mode");
       const newEle = document.createElement("button");
       newEle.type = "button";
-      newEle.className = "fas fa-sign-out-alt exit-readmode";
+      newEle.className = "anzhiyufont anzhiyu-icon-xmark exit-readmode";
       $body.appendChild(newEle);
 
       const clickFn = () => {
@@ -900,9 +892,20 @@ document.addEventListener("DOMContentLoaded", function () {
       saveToLocal.set("aside-status", saveStatus, 2);
       $htmlDom.toggle("hide-aside");
     },
-    "mobile-toc-button": () => {
+    "mobile-toc-button": item => {
       // Show mobile toc
-      document.getElementById("card-toc").classList.toggle("open");
+      const tocEle = document.getElementById("card-toc");
+      tocEle.style.transformOrigin = `right ${item.getBoundingClientRect().top + 17}px`;
+      tocEle.style.transition = "transform 0.3s ease-in-out";
+      tocEle.classList.toggle("open");
+      tocEle.addEventListener(
+        "transitionend",
+        () => {
+          tocEle.style.transition = "";
+          tocEle.style.transformOrigin = "";
+        },
+        { once: true }
+      );
     },
     "chat-btn": () => {
       // Show chat
@@ -1468,7 +1471,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 监听nav是否被其他音频暂停⏸️
   const listenNavMusicPause = function () {
     const timer = setInterval(() => {
-      if (navMusicEl.querySelector("#nav-music meting-js").aplayer) {
+      if (navMusicEl && navMusicEl.querySelector("#nav-music meting-js").aplayer) {
         clearInterval(timer);
         let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
         let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
@@ -1608,7 +1611,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isEscapeKeyPressed) {
         anzhiyu.hideLoading();
         anzhiyu.hideConsole();
-        rm.hideRightMenu();
+        rm && rm.hideRightMenu();
       }
       const shortcutKeyDelay = GLOBAL_CONFIG.shortcutKey.delay ? GLOBAL_CONFIG.shortcutKey.delay : 100;
       const shortcutKeyShiftDelay = GLOBAL_CONFIG.shortcutKey.shiftDelay ? GLOBAL_CONFIG.shortcutKey.shiftDelay : 200;
@@ -1816,6 +1819,8 @@ document.addEventListener("DOMContentLoaded", function () {
     anzhiyu.switchRightClickMenuHotReview();
     anzhiyu.getCustomPlayList();
     anzhiyu.addEventListenerConsoleMusicList(false);
+    anzhiyu.initPaginationObserver();
+
     setTimeout(() => {
       setInputFocusListener();
       if (typeof addFriendLinksInFooter === "function") {
